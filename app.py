@@ -7,23 +7,23 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 st.set_page_config(page_title="LinkedIn Post Generator", layout="centered")
 
-st.title("✍️ Generatore di Post LinkedIn con Groq")
+st.title("✍️ LinkedIn post generator")
 
-st.write("Inserisci un testo grezzo e trasformalo in un post professionale per LinkedIn.")
+st.write("Enter your raw text and transform it into a LinkedIn post.")
 
 # Input utente
-user_input = st.text_area("Testo di partenza", height=200)
+user_input = st.text_area("Testo di partenza", height=300)
 
 tone = st.selectbox(
-    "Scegli il tono del post",
-    ["Professionale", "Ispirazionale", "Informale", "Tecnico"]
+    "choose the post tone",
+    ["Professional", "Ispirational"]
 )
 
-if st.button("Genera Post"):
+if st.button("Generate Post"):
     if not user_input.strip():
         st.warning("Inserisci del testo prima di generare.")
     else:
-        with st.spinner("Generazione in corso..."):
+        with st.spinner("Generation in progress..."):
 
             prompt = f"""
             Trasforma il seguente testo in un post LinkedIn ben strutturato.
