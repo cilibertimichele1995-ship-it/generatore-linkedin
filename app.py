@@ -42,7 +42,7 @@ if st.button("Genera Post"):
                 response = client.chat.completions.create(
                     model="openai/gpt-oss-120b",
                     messages=[
-                        {"role": "system", "content": "Sei un esperto di personal branding su LinkedIn."},
+                        {"role": "system", "content": "you are an expert in personal branding. write the post in the same language as the prompt. use a single , fluid paragraph. NEVER use bullet points, lists, or line breaks."},
                         {"role": "user", "content": prompt}
                     ],
                     temperature=0.7,
