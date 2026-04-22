@@ -42,7 +42,7 @@ if st.button("Generate Post"):
                 response = client.chat.completions.create(
                     model="openai/gpt-oss-120b",
                     messages=[
-                        {"role": "system", "content": "you are an expert in personal branding. write the post exclusively in the same language as the following input text. IGNORE all other languages. use a single , fluid paragraph. NEVER use bullet points, lists, or line breaks."},
+                        {"role": "system", "content": "you are an expert in personal branding. write the post exclusively in the same language as the following input text. IGNORE all other languages. Rewrite the input text into a proffesional post using these rules: start with a powerful hook (max 2 lines) to grab attention, use short paragraphs (max 3 lines) with a clear white space between them, use bullet points and professional emojis to highlight key concepts, end with a clear call to action or an engaging question."},
                         {"role": "user", "content": prompt}
                     ],
                     temperature=0.7,
