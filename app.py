@@ -40,7 +40,7 @@ if st.button("Genera Post"):
 
             try:
                 response = client.chat.completions.create(
-                    model="llama3-70b-8192",
+                    model="11ama-3.3-70b-versatile",
                     messages=[
                         {"role": "system", "content": "Sei un esperto di personal branding su LinkedIn."},
                         {"role": "user", "content": prompt}
