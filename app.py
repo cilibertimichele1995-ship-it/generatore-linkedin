@@ -40,7 +40,7 @@ if st.button("Genera Post"):
 
             try:
                 response = client.chat.completions.create(
-                    model="mixtral-8x7b-32768",
+                    model="openai/gpt-oss-120b",
                     messages=[
                         {"role": "system", "content": "Sei un esperto di personal branding su LinkedIn."},
                         {"role": "user", "content": prompt}
