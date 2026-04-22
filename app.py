@@ -12,7 +12,7 @@ st.title("✍️ LinkedIn post generator")
 st.write("Enter your raw text and transform it into a LinkedIn post.")
 
 # Input utente
-user_input = st.text_area("Testo di partenza", height=300)
+user_input = st.text_area("Starting test", height=300)
 
 tone = st.selectbox(
     "choose the post tone",
@@ -21,7 +21,7 @@ tone = st.selectbox(
 
 if st.button("Generate Post"):
     if not user_input.strip():
-        st.warning("Inserisci del testo prima di generare.")
+        st.warning("Please enter some text before generating.")
     else:
         with st.spinner("Generation in progress..."):
 
@@ -42,7 +42,7 @@ if st.button("Generate Post"):
                 response = client.chat.completions.create(
                     model="openai/gpt-oss-120b",
                     messages=[
-                        {"role": "system", "content": "you are an expert in personal branding. write the post exclusively in the same language used in the user prompt. IGNORE all other languages. use a single , fluid paragraph. NEVER use bullet points, lists, or line breaks."},
+                        {"role": "system", "content": "you are an expert in personal branding. write the post exclusively in the same language as the following input text. IGNORE all other languages. use a single , fluid paragraph. NEVER use bullet points, lists, or line breaks."},
                         {"role": "user", "content": prompt}
                     ],
                     temperature=0.7,
@@ -51,11 +51,11 @@ if st.button("Generate Post"):
 
                 output = response.choices[0].message.content
 
-                st.subheader("📢 Post Generato")
+                st.subheader("📢 Generated post")
                 st.write(output)
 
                 st.download_button(
-                    label="Scarica il post",
+                    label="Download post",
                     data=output,
                     file_name="linkedin_post.txt",
                     mime="text/plain"
